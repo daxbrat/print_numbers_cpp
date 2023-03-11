@@ -3,16 +3,17 @@
 using namespace std;
 
 char convert_to_upper(char);
-void print_list(vector<int>);
+char display_menu();
+void print_list(const vector<int> &listing);
 void add(vector<int> &listing);
-void calculate_mean(vector<int>);
-void smallest (vector<int>);
-void largest(vector<int>); 
+void calculate_mean(const vector<int> &listing);
+void smallest (vector<int> &listing);
+void largest(vector<int> &listing); 
 
 // Display Menu Function
 char display_menu() {
     char selection {};
-        cout << "P - Print Test numbers" << endl;
+        cout << "P - Print numbers" << endl;
         cout << "A - Add a number" << endl;
         cout << "M - Display mean of the numbers" << endl;
         cout << "S - Display the smallest number" << endl;
@@ -32,7 +33,7 @@ char convert_to_upper(char select) {
 
 // Print function
 
-void print_list(vector<int> listing) {
+void print_list(const vector<int> &listing) {
     if (listing.size() == 0) {
                 cout << "[] - the list is empty\n" << endl;
             } else {
@@ -57,7 +58,7 @@ void add(vector<int> &listing) {
 }
 
 // Calculate Mean function
-void calculate_mean(vector<int> listing) {
+void calculate_mean(const vector<int> &listing) {
     if (listing.size() == 0) {
                 cout << "Unable to calculate the mean - no data" << endl;
             } else {
@@ -73,7 +74,7 @@ void calculate_mean(vector<int> listing) {
 }
 
 // Smallest function
-void smallest(vector<int> listing) {
+void smallest(vector<int> &listing) {
     if (listing.size() == 0) {
                 cout << "Unable to determine the smallest number - the list is empty" << endl;
             } else {
@@ -88,7 +89,7 @@ void smallest(vector<int> listing) {
 }
 
 // Largest function
-void largest(vector<int> listing) {
+void largest(vector<int> &listing) {
     if (listing.size() == 0) {
                 cout << "Unable to determine the largest number - the list is empty" << endl;
             } else {
