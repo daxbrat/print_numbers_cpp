@@ -2,13 +2,10 @@
 #include <vector>
 using namespace std;
 
-int main () {
-    
-    char selection {};
-    vector<int> listing {};
+char convert_to_upper(char);
 
-    
-    do {
+char display_menu() {
+    char selection {};
         cout << "P - Print numbers" << endl;
         cout << "A - Add a number" << endl;
         cout << "M - Display mean of the numbers" << endl;
@@ -16,10 +13,30 @@ int main () {
         cout << "L - Display the largest number" << endl;
         cout << "Q - Quit" << endl;
         cout << "\nEnter your choice: ";
-        
         cin >> selection;
         
-        if (selection == 'P' || selection == 'p') {
+        return convert_to_upper(selection);
+}
+
+char convert_to_upper(char select) {
+    select = toupper(select) ;
+    return select;
+}
+///////////////////////////////////////////////////////////////////////////
+int main () {
+    
+    char selection {};
+   
+    vector<int> listing {};
+    
+    
+
+    
+    do {
+         selection = display_menu();
+        
+        
+        if (selection == 'P' ) {
             if (listing.size() == 0) {
                 cout << "[] - the list is empty\n" << endl;
             } else {
@@ -29,7 +46,7 @@ int main () {
                 }
             cout << "]\n" << endl;
             }
-        } else if (selection == 'A' || selection == 'a') {
+        } else if (selection == 'A') {
             int add_number{};
             cout << "Enter a number to add: ";
             cin >> add_number;
@@ -49,7 +66,7 @@ int main () {
             }
         
         
-        } else if (selection == 'S' || selection == 's' ) {
+        } else if (selection == 'S') {
             if (listing.size() == 0) {
                 cout << "Unable to determine the smallest number - the list is empty" << endl;
             } else {
@@ -62,7 +79,7 @@ int main () {
                 cout << "The smallest number is " << smallest << "\n" << endl;
             } 
             
-        } else if (selection == 'L' || selection == 'l' ) {
+        } else if (selection == 'L') {
             if (listing.size() == 0) {
                 cout << "Unable to determine the largest number - the list is empty" << endl;
             } else {
@@ -75,12 +92,12 @@ int main () {
              cout << "The largest number is " << largest << "\n" << endl;
             } 
                 
-        } else if (selection != 'Q' && selection != 'q') {
+        } else if (selection != 'Q') {
                 cout << "Unknown selection, please try again\n" << endl;
             }
              
         
-    } while (selection != 'Q' && selection != 'q');
+    } while (selection != 'Q');
     cout << "\nGoodbye..." << endl;
     
     
