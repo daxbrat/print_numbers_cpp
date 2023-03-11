@@ -5,6 +5,9 @@ using namespace std;
 char convert_to_upper(char);
 void print_list(vector<int>);
 void add(vector<int> &listing);
+void calculate_mean(vector<int>);
+void smallest (vector<int>);
+void largest(vector<int>); 
 
 // Display Menu Function
 char display_menu() {
@@ -52,6 +55,52 @@ void add(vector<int> &listing) {
             cout << add_number << " added\n" << endl;
         
 }
+
+// Calculate Mean function
+void calculate_mean(vector<int> listing) {
+    if (listing.size() == 0) {
+                cout << "Unable to calculate the mean - no data" << endl;
+            } else {
+            double total{};
+            double mean{};
+            for (auto num: listing) {
+                total += num;
+            }
+            mean = total / listing.size();
+            cout << "The mean is: " << mean << "\n" << endl;
+            }
+        
+}
+
+// Smallest function
+void smallest(vector<int> listing) {
+    if (listing.size() == 0) {
+                cout << "Unable to determine the smallest number - the list is empty" << endl;
+            } else {
+            int smallest {listing.at(0)};
+             for (auto num: listing) {
+                if (num < smallest) {
+                 smallest = num;
+                }
+             }
+                cout << "The smallest number is " << smallest << "\n" << endl;
+            } 
+}
+
+// Largest function
+void largest(vector<int> listing) {
+    if (listing.size() == 0) {
+                cout << "Unable to determine the largest number - the list is empty" << endl;
+            } else {
+            int largest {listing.at(0)};
+             for (auto num: listing) {
+                if (num > largest) {
+                 largest = num;
+                }
+             }
+             cout << "The largest number is " << largest << "\n" << endl;
+            } 
+}
 ///////////////////////////////////////////////////////////////////////////
 int main () {
     
@@ -59,8 +108,6 @@ int main () {
    
     vector<int> listing {};
     
-    
-
     
     do {
          selection = display_menu(); // Call display menu function
@@ -73,44 +120,14 @@ int main () {
            add(listing); // Call add function
            
         } else if (selection == 'M' || selection == 'm') {
-            if (listing.size() == 0) {
-                cout << "Unable to calculate the mean - no data" << endl;
-            } else {
-            double total{};
-            double mean{};
-            for (auto num: listing) {
-                total += num;
-            }
-            mean = total / listing.size();
-            cout << "The mean is: " << mean << "\n" << endl;
-            }
+            calculate_mean(listing);  // Call calculate_mean function
         
         
         } else if (selection == 'S') {
-            if (listing.size() == 0) {
-                cout << "Unable to determine the smallest number - the list is empty" << endl;
-            } else {
-            int smallest {listing.at(0)};
-             for (auto num: listing) {
-                if (num < smallest) {
-                 smallest = num;
-                }
-             }
-                cout << "The smallest number is " << smallest << "\n" << endl;
-            } 
+            smallest(listing);   // Call smallest function
             
         } else if (selection == 'L') {
-            if (listing.size() == 0) {
-                cout << "Unable to determine the largest number - the list is empty" << endl;
-            } else {
-            int largest {listing.at(0)};
-             for (auto num: listing) {
-                if (num > largest) {
-                 largest = num;
-                }
-             }
-             cout << "The largest number is " << largest << "\n" << endl;
-            } 
+            largest(listing);       // Call largest function
                 
         } else if (selection != 'Q') {
                 cout << "Unknown selection, please try again\n" << endl;
