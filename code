@@ -3,10 +3,13 @@
 using namespace std;
 
 char convert_to_upper(char);
+void print_list(vector<int>);
+void add(vector<int> &listing);
 
+// Display Menu Function
 char display_menu() {
     char selection {};
-        cout << "P - Print numbers" << endl;
+        cout << "P - Print Test numbers" << endl;
         cout << "A - Add a number" << endl;
         cout << "M - Display mean of the numbers" << endl;
         cout << "S - Display the smallest number" << endl;
@@ -15,12 +18,39 @@ char display_menu() {
         cout << "\nEnter your choice: ";
         cin >> selection;
         
-        return convert_to_upper(selection);
+        return convert_to_upper(selection); // Call convert to upper function
 }
 
+//  Convert to Uppercase Function
 char convert_to_upper(char select) {
     select = toupper(select) ;
     return select;
+}
+
+// Print function
+
+void print_list(vector<int> listing) {
+    if (listing.size() == 0) {
+                cout << "[] - the list is empty\n" << endl;
+            } else {
+                    cout << "[ ";
+                for (auto num: listing) {
+                    cout << num << " ";
+                }
+            cout << "]\n" << endl;
+            }
+            
+}
+
+// Add function
+
+void add(vector<int> &listing) {
+ int add_number{};
+            cout << "Enter a number to add: ";
+            cin >> add_number;
+            listing.push_back(add_number);
+            cout << add_number << " added\n" << endl;
+        
 }
 ///////////////////////////////////////////////////////////////////////////
 int main () {
@@ -33,25 +63,15 @@ int main () {
 
     
     do {
-         selection = display_menu();
+         selection = display_menu(); // Call display menu function
         
         
         if (selection == 'P' ) {
-            if (listing.size() == 0) {
-                cout << "[] - the list is empty\n" << endl;
-            } else {
-                    cout << "[ ";
-                for (auto num: listing) {
-                    cout << num << " ";
-                }
-            cout << "]\n" << endl;
-            }
+            print_list(listing);  // Call Print function
+            
         } else if (selection == 'A') {
-            int add_number{};
-            cout << "Enter a number to add: ";
-            cin >> add_number;
-            listing.push_back(add_number);
-            cout << add_number << " added\n" << endl;
+           add(listing); // Call add function
+           
         } else if (selection == 'M' || selection == 'm') {
             if (listing.size() == 0) {
                 cout << "Unable to calculate the mean - no data" << endl;
